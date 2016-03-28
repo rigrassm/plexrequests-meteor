@@ -22,14 +22,14 @@ Meteor.methods({
 		} else {var req = request;}
 
 		var message_title = t.replace(tags.title, req.title);
-	    var message_title = message_title.replace(tags.type, req.type);
+	    var message_title = message_title.replace(tags.type, req.media_type);
 		var message_title = message_title.replace(tags.user, req.user);
 		var message_title = message_title.replace(tags.issues, req.issues);
 		var message_title = message_title.replace(tags.release, req.release);
 		var message_title = message_title.replace(tags.link, req.link);
 
 		var message_body = b.replace(tags.title, req.title);
-		var message_body = message_body.replace(tags.type, req.type);
+		var message_body = message_body.replace(tags.type, req.media_type);
 		var message_body = message_body.replace(tags.user, req.user);
 		var message_body = message_body.replace(tags.issues, req.issues);
 		var message_body = message_body.replace(tags.release, req.release);
