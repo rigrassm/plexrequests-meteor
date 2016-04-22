@@ -1,0 +1,13 @@
+[Unit]
+Description=Meteor Daemon
+
+[Service]
+WorkingDirectory=/apps/plexrequests-meteor-dev
+Type=simple
+User=plex
+Group=plex
+
+ExecStart=/usr/local/bin/meteor-start
+
+[Install]
+WantedBy=multi-user.target

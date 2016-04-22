@@ -3,7 +3,8 @@ Template.item.helpers({
     return this.index == 0;
   },
   'posterExists' : function () {
-    return this.poster_path != "";
+    var s_poster_path = this.poster_path.replace("http", "https");
+	return s_poster_path != "";
   },
   'isTV' : function () {
     return this.media_type === "tv";

@@ -15,21 +15,14 @@ Router.route(base, {
   name: 'home',
   template: 'home',
   onBeforeAction: function () {
-  		this.render('home');
-  	}
-});
-
-Router.route(base + '/login', {
-  name: 'login.page',
-  template: 'login',
-  onBeforeAction: function () {
     if (Session.get("auth") === "true") {
-      this.render("homealt");
-    } else {
-      this.render('login');
-    }
+      this.redirect('search.page')
+  	} else {
+  		this.next();
+  	}
   }
 });
+
 Router.route(base + '/search', {
   name: 'search.page',
   template: 'search',
@@ -40,7 +33,7 @@ Router.route(base + '/search', {
     if (Session.get("auth") === "true") {
       this.next();
     } else {
-      this.redirect('login.page');
+      this.redirect('home');
     }
   }
 });
@@ -53,7 +46,7 @@ Router.route(base + '/requests', {
   },
   onBeforeAction: function () {
     if (Session.get("auth") !== "true" && !Meteor.userId()) {
-      this.redirect('login.page');
+      this.redirect('home');
     } else {
       this.next();
     }

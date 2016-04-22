@@ -53,11 +53,14 @@ Template.search.helpers({
 });
 
 Template.search.events({
-  'click .search-selector a' : function (event, template) {
-    var type = $(event.target).text();
-    template.searchType.set(type);
-    template.results.set([]);
-    $('#search-input').trigger('keyup');
+	'click [data-action=back]' : function () {
+		history.back();
+   },
+	'click .search-selector a' : function (event, template) {
+		var type = $(event.target).text();
+		template.searchType.set(type);
+		template.results.set([]);
+		$('#search-input').trigger('keyup');
   },
   'keyup  #search-input': _.throttle(function (event, template) {
     var searchterm = $(event.target).val().trim();

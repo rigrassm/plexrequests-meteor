@@ -1,0 +1,12 @@
+#!/bin/bash
+
+APP_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && cd "../../" && pwd)";
+cd ${APP_DIR};
+
+# Change port number if desired
+PORT=3000
+
+# Check if port is open
+exec 6<>/dev/tcp/127.0.0.1/${PORT} && echo "port in use, exiting" && exit 1
+
+meteor run --production --port ${PORT}
